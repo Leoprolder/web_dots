@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  div
+    input(type = "number" ng-model="x" placeholder="Введите x")
+    input(type = "number" ng-model="y" placeholder="Введите y")
+    input(type="button" ng-click="addItem(x, y)" value = "Добавить")
+    input(type="button" ng-click="sortAndDrawOnServer(dots_list)" value = "Отсортировать на сервере и вывести")
+    input(type="button" ng-click="sortAndDraw(dots_list)" value = "Отсортировать на клиенте и вывести")
+    table(border=1 width=100)
+      thead
+        tr
+          th X
+          th Y
+      tbody
+        tr(ng-repeat="item in list.items")
+          td {{item.x}}
+          td {{item.y}}
+    h1 График
+    canvas(width=800 height=600 id='canvas')
+  script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js")
+  script(src="/javascripts/dots_list.js")
